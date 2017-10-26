@@ -3,7 +3,7 @@ import { Restaurant } from '../../api/restaurants';
 
 export default class App extends React.Component {
   renderRestaurants() {
-    if(!this.props.restaurants)
+    if(this.props.restaurants.length <= 0)
         return <div>No data</div>;
     return this.props.restaurants.map(r => <div key={r._id}>{r._id}, {r.name}</div>);
   }

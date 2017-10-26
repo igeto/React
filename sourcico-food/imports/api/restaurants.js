@@ -7,6 +7,7 @@ export const Restaurant = Class.create({
     name: 'Restaurant',
     collection: Restaurants,
     fields: {
-        name: String
+        name: String,
+        phoneNumbers: [String]
     }
 });

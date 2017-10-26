@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 
 import App from '../imports/ui/components/App';
-import { Restaurant } from '../imports/api/restaurants';
-
 
 
 Meteor.startup(() => {
-  let restaurants = Restaurant.find({}).fetch();
-  ReactDOM.render(<App restaurants={restaurants} />, document.getElementById('app'));
+    Meteor.subscribe('restaurant');
+    let restaurants = Restaurant.find({}).fetch();
+    ReactDOM.render(<App restaurants={restaurants}/>, document.getElementById('app'));
 });
