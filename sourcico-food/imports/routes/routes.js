@@ -4,6 +4,7 @@ import { Route, Router, browserHistory } from 'react-router';
 
 import { Signup, Link, NotFound, Login } from '../ui/components';
 window.browserHistory = browserHistory;
+window.accounts = Accounts;
 
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/link'];
