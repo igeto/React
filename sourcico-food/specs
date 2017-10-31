@@ -1,0 +1,25 @@
+restaurants { (picture), name, [phoneNumbers], [menu], [orders] }
+menuItems { (picture), restaurantId, menuItemName, description }
+orders { restaurantId, menuItemId/Name, userId/Name, with/without, createdAt: with TTL }
+
+Users will log in to see list of restaurants, here they can choose a restaurant or add a new one.
+    When restaurant is chosen the user gets redirected to the menu list for that restaurant, here they can choose something from the menu or add new menuItem.
+        When a menu item is chosen the user is redirected to a form for specifying extras and confirming order, menu item is then added to order list of that restaurant.
+        When add new item is chosen the user is redirected to a submit form for the new menu item which on submit redirects the user back to the menu list
+    When add new restaurant is chosen the user is redirected to a submit form for the new restaurant which on submit redirects the user back to restaurants list.
+
+
+- Always visible navbar component with logout button and link to restaurants and orders components
+- Signup component
+- Login component
+- Restaurant component
+- New restaurant component
+- Restaurant list component
+- Menu item component
+- New menu item component
+- Menu item list component
+- Order component
+- Order list component
+- List of order lists component
+
+- (Profile component)

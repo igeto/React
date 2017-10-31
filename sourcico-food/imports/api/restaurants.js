@@ -1,13 +1,24 @@
 import { Mongo } from 'meteor/mongo';
-import { Class } from 'meteor/jagi:astronomy';
+import { Meteor } from "meteor/meteor";
+
+import SimpleSchema from 'simpl-schema';
 
 export const Restaurants = new Mongo.Collection('restaurants');
 
-export const Restaurant = Class.create({
-    name: 'Restaurant',
-    collection: Restaurants,
-    fields: {
-        name: String,
-        phoneNumbers: [String]
-    }
+if (Meteor.isServer) {
+    Meteor.publish('restaurants', () => {
+        return Restaurants.find({});
+    });
+}
+
+const Restaurant = new SimpleSchema({
+    name: {
+        type: String,
+        max: 20
+    },
+    phoneNumbers: Array,
+    'phoneNumbers.$': {
+        type: String,
+        regEx: [/^(?=.*[0-9])$/g]
+    }    
 });
