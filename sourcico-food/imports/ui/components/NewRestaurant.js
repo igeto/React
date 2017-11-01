@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from "meteor/tracker";
 
 import { Restaurants } from "../../api/restaurants";
+import { Navbar } from "./";
 
 export class NewRestaurant extends React.Component {
     constructor(props) {
@@ -36,12 +37,15 @@ export class NewRestaurant extends React.Component {
     render() {
         return (
             <div>
-                <h1>Add new restaurant</h1>
-                <form onSubmit={this.onSubmit.bind(this)} noValidate>
-                    <input type='text' ref='restaurantName' name='restaurantName' placeholder='Restaurant name' />
-                    <input type='text' ref='phoneNumber' name='phoneNumber' placeholder='02-1234-567' />
-                    <button>Add</button>
-                </form>
+                <Navbar />
+                <div className='wrapper'>
+                    <h1>Add new restaurant</h1>
+                    <form onSubmit={this.onSubmit.bind(this)} noValidate>
+                        <input type='text' ref='restaurantName' name='restaurantName' placeholder='Restaurant name' />
+                        <input type='text' ref='phoneNumber' name='phoneNumber' placeholder='02-1234-567' />
+                        <button>Add</button>
+                    </form>
+                </div>
             </div>
         );
     }

@@ -36,14 +36,16 @@ export class Restaurant extends React.Component {
     }
 
     render() {
-        return (            
+        return (
             <div>
                 <Navbar />
-                <h1>Restaurants</h1>
-                <div>
-                    {this.renderRestaurants()}
+                <div className='wrapper'>
+                    <h1>Restaurants</h1>
+                    <div>
+                        {this.renderRestaurants()}
+                    </div>
+                    <button onClick={this.onClick} >Add new restaurant</button>
                 </div>
-                <button onClick={this.onClick} >Add new restaurant</button>
             </div>
         );
     }

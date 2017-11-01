@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
 
+import { Navbar } from "./";
+
 export class Signup extends React.Component {
     constructor(props) {
         super(props);
@@ -29,14 +31,17 @@ export class Signup extends React.Component {
     render() {
         return (
             <div>
-                <h1>Create an account</h1>
-                {this.state.error ? <p>{this.state.error}</p> : undefined}
-                <form onSubmit={this.onSubmit.bind(this)} noValidate>
-                    <input type='email' ref='email' name='email' placeholder='email' />
-                    <input type='password' ref='password' name='password' placeholder='password' />
-                    <button>Signup</button>
-                </form>
-                <Link to='/'>Already have an account?</Link>
+                <Navbar />
+                <div className='wrapper'>
+                    <h1>Create an account</h1>
+                    {this.state.error ? <p>{this.state.error}</p> : undefined}
+                    <form className='form' onSubmit={this.onSubmit.bind(this)} noValidate>
+                        <input className='form__input' type='email' ref='email' name='email' placeholder='email' />
+                        <input className='form__input' type='password' ref='password' name='password' placeholder='password' />
+                        <button>Signup</button>
+                    </form>
+                    <Link to='/'>Already have an account?</Link>
+                </div>
             </div>
         );
     }
