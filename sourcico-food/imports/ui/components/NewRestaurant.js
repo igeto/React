@@ -19,9 +19,10 @@ export class NewRestaurant extends React.Component {
         e.preventDefault();
 
         let restaurantName = this.refs.restaurantName.value.trim();
-        let phoneNumber = this.refs.phoneNumber.value.trim();
-
-        Restaurants.insert({ name: restaurantName, phoneNumber: [phoneNumber]});
+        let phoneNumber = [];
+        phoneNumber.push(this.refs.phoneNumber.value.trim());
+        Meteor.call('restaurants.insert', restaurantName, phoneNumber);
+        // Restaurants.insert({ name: restaurantName, phoneNumber: [phoneNumber]});
         browserHistory.replace('/restaurants');
     }
 
