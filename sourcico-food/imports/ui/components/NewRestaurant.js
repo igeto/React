@@ -18,12 +18,10 @@ export class NewRestaurant extends React.Component {
     onSubmit(e) {
         e.preventDefault();
 
-        let menu = '';
         let restaurantName = this.refs.restaurantName.value.trim();
         let phoneNumber = this.refs.phoneNumber.value.trim();
-        this.refs.menu ? menu = this.refs.menu.value.trim() : menu = '';
 
-        Restaurants.insert({ name: restaurantName, phoneNumber: [phoneNumber], menu: [menu] });
+        Restaurants.insert({ name: restaurantName, phoneNumber: [phoneNumber]});
         browserHistory.replace('/restaurants');
     }
 

@@ -31,13 +31,23 @@ export class Login extends React.Component {
                 <div className='wrapper'>
                     <h1>Login to Sourcico Food</h1>
                     {this.state.error ? <p>{this.state.error}</p> : undefined}
-                    <form onSubmit={this.onSubmit.bind(this)} noValidate>
-                        <input type='email' ref='email' name='email' placeholder='email' />
-                        <input type='password' ref='password' name='password' placeholder='password' />
-                        <button>Login</button>
-                    </form>
 
-                    <Link to='/signup'>Don't have an account?</Link>
+                    <form className='login__padding' onSubmit={this.onSubmit.bind(this)} noValidate>
+                        <div className='form'>
+                            <div className='form__field' >
+                                <div>
+                                    <input className='form__input' type='email' ref='email' name='email' placeholder='email' />
+                                </div>
+                                <div>
+                                    <input className='form__input' type='password' ref='password' name='password' placeholder='password' />
+                                </div>
+                            </div>
+                            <div>
+                                <button className='form__login' >Login</button>
+                            </div>
+                        </div>
+                        <Link className='link__login' to='/signup'>Don't have an account?</Link>
+                    </form>
                 </div>
             </div>
         );

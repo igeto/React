@@ -35,12 +35,22 @@ export class Signup extends React.Component {
                 <div className='wrapper'>
                     <h1>Create an account</h1>
                     {this.state.error ? <p>{this.state.error}</p> : undefined}
-                    <form className='form' onSubmit={this.onSubmit.bind(this)} noValidate>
-                        <input className='form__input' type='email' ref='email' name='email' placeholder='email' />
-                        <input className='form__input' type='password' ref='password' name='password' placeholder='password' />
-                        <button>Signup</button>
+                    <form className='login__padding' onSubmit={this.onSubmit.bind(this)} noValidate>
+                        <div className='form'>
+                            <div className='form__field' >
+                                <div>
+                                    <input className='form__input' type='email' ref='email' name='email' placeholder='email' />
+                                </div>
+                                <div>
+                                    <input className='form__input' type='password' ref='password' name='password' placeholder='password' />
+                                </div>
+                            </div>
+                            <div>
+                                <button className='form__login' >Signup</button>
+                            </div>
+                        </div>
+                        <Link className='link__login' to='/'>Already have an account?</Link>
                     </form>
-                    <Link to='/'>Already have an account?</Link>
                 </div>
             </div>
         );
