@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Route, Router, browserHistory } from 'react-router';
 
-import { Signup, Link, NotFound, Login, Restaurant, NewRestaurant } from '../ui/components';
+import { Signup, Link, NotFound, Login, RestaurantList, NewRestaurant } from '../ui/components';
 window.browserHistory = browserHistory;
 window.accounts = Accounts;
 
@@ -34,7 +34,7 @@ export const routes = (
     <Router history={browserHistory}>
         <Route path='/' component={Login} onEnter={onEnterPublicPage} />
         <Route path='/signup' component={Signup} onEnter={onEnterPublicPage} />
-        <Route path='/restaurants' component={Restaurant} onEnter={onEnterPrivatePage} />
+        <Route path='/restaurants' component={RestaurantList} onEnter={onEnterPrivatePage} />
         <Route path='/restaurants/new' component={NewRestaurant} onEnter={onEnterPrivatePage} />
         <Route path='*' component={NotFound} onEnter={onEnterPrivatePage} />
     </Router>

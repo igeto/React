@@ -37,6 +37,14 @@ Meteor.methods({
         if(!Meteor.userId()) {
             throw new Meteor.Error('not authorized', 'You have to be logged in to add a new restaurant');
         }
-        Restaurants.insert({ name: name, phoneNumbers: phoneNumbers });
+        Restaurants.insert({ name, phoneNumbers });
+    },
+    'restaurants.remove'(id) {
+        console.log('id:',id);
+        check(id, String);
+        if(!Meteor.userId()) {
+            throw new Meteor.Error('not authorized', 'You have to be logged in to add a new restaurant');
+        }
+        Restaurants.remove({ _id: id });
     }
-})
+});

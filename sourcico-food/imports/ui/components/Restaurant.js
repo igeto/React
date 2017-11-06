@@ -1,52 +1,29 @@
 import React from 'react';
-import { Link, browserHistory } from 'react-router';
-import { Meteor } from 'meteor/meteor';
-import { Tracker } from "meteor/tracker";
+import { Meteor } from "meteor/meteor";
 
 import { Restaurants } from "../../api/restaurants";
-import { Navbar } from "./";
 
 export class Restaurant extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            restaurants: [],
-            error: ''
-        };
-    }
-
-    onClick() {
-        browserHistory.replace('/restaurants/new');
-    }
-
-    componentDidMount() {
-        Meteor.subscribe('restaurants');
-        this.restaurantsTracker = Tracker.autorun(() => {
-            this.setState({ restaurants: Restaurants.find().fetch() })
-        });
-
-    }
-
-    componentWillUnmount() {
-        this.restaurantsTracker.stop();
-    };
-
-    renderRestaurants() {
-        return this.state.restaurants.map(r => <div key={r._id}>{r.name}</div>);
+    handleRestaurantRemove() {
+        Meteor.call('restaurants.remove', this.props.restaurant._id);
     }
 
     render() {
+        // let itemClassName = `item item--position-${this.props.player.rank}`;
+
         return (
-            <div>
-                <Navbar />
-                <div className='wrapper'>
-                    <h1>Restaurants</h1>
+            <div key={this.props.restaurant._id}>
+                <div >
                     <div>
-                        {this.renderRestaurants()}
+                        <h3>
+                            {this.props.restaurant.name}
+                        </h3>
                     </div>
-                    <button onClick={this.onClick} >Add new restaurant</button>
+                    <div>
+                        <button onClick={this.handleRestaurantRemove.bind(this)}>X</button>
+                    </div>               
                 </div>
             </div>
-        );
+       );
     }
 }
