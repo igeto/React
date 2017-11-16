@@ -16,7 +16,7 @@ export class RestaurantList extends React.Component {
     }
 
     handleAddNewRestaurant() {
-        browserHistory.replace('/restaurants/new');
+        browserHistory.push('/restaurants/new');
     }
 
     handleDeleteRestaurant(id) {

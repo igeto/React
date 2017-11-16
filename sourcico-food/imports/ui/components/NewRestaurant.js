@@ -33,30 +33,24 @@ export class NewRestaurant extends React.Component {
     }
 
     handlePhoneNumberInput = i => e => {
-        newNumbers = this.state.phoneNumbers.map((number, index) => {
-            return i !== index ? number : e.target.value
-        })
+        newNumbers = this.state.phoneNumbers.map((number, index) => i !== index ? number : e.target.value)
         this.setState({ phoneNumbers: newNumbers })
     }
 
     handleAddPhoneNumber() {
-        new Promise((res, rej) => {
-            if (res)
-                return this.setState({ phoneNumbers: this.state.phoneNumbers.concat(['']) })
-        }).then(console.log(this.state.phoneNumbers))
+        return this.setState({ phoneNumbers: this.state.phoneNumbers.concat(['']) })
     }
 
     handleRemovePhoneNumber(i) {
         const filteredNumbers = this.state.phoneNumbers.filter((number, index) => i !== index)
         this.setState({ phoneNumbers: filteredNumbers })
-        console.log(i)
         return
     }
 
     handlePhoneNumberInputFields() {
         return this.state.phoneNumbers.map((number, i) => {
             return (<div key={i}>
-                <input type='text' ref='phoneNumber' name={`phonenumber ${i}`} placeholder='02-1234-567' value={number} onChange={this.handlePhoneNumberInput(i)} />
+                <input type='text' ref='phoneNumber' name={`phonenumber ${i}`} placeholder='phone number' value={number} onChange={this.handlePhoneNumberInput(i)} />
                 <button type="button" onClick={() => this.handleRemovePhoneNumber(i)} className="small">-</button>
             </div>)
         })
@@ -67,9 +61,6 @@ export class NewRestaurant extends React.Component {
     }
 
     componentWillUnmount() {
-    };
-    showState() {
-        console.log(this.state.phoneNumbers)
     }
 
     render() {
@@ -86,7 +77,6 @@ export class NewRestaurant extends React.Component {
                         <button type='submit'>Add</button>
                     </form>
                 </div>
-                <button onClick={this.showState.bind(this)}>Test</button>
             </div>
         );
     }

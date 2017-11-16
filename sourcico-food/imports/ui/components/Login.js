@@ -21,7 +21,7 @@ export class Login extends React.Component {
         Meteor.loginWithPassword({ email }, password, err => {
             !!err ? this.setState({ error: err.reason }) : this.setState({ error: '' });
         });
-        browserHistory.push('/restaurant');
+        browserHistory.replace('/restaurant');
     }
 
     render() {

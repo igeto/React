@@ -7,7 +7,7 @@ window.browserHistory = browserHistory;
 window.accounts = Accounts;
 
 const unauthenticatedPages = ['/', '/signup'];
-const authenticatedPages = ['/restaurants', '/restaurants/new'];
+const authenticatedPages = ['/restaurants', '/restaurants/new', '/profle'];
 
 const onEnterPublicPage = () => {
     if (Meteor.userId())
