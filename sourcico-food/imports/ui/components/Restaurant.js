@@ -20,6 +20,10 @@ export class Restaurant extends React.Component {
                         </h3>
                     </div>
                     <div>
+                        <p>Phone Numbers:</p>
+                        <p>{this.props.restaurant.phoneNumbers[0]}</p>
+                    </div>
+                    <div>
                         <button onClick={this.handleRestaurantRemove.bind(this)}>X</button>
                     </div>               
                 </div>
