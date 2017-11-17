@@ -11,6 +11,7 @@ export class NewRestaurant extends React.Component {
         super();
         this.state = {
             phoneNumbers: [''],
+            menu: [{ name: '', price: 0, description: '' }],
             error: ''
         };
     }
@@ -22,12 +23,12 @@ export class NewRestaurant extends React.Component {
         Meteor.call('restaurants.insert', restaurantName, this.state.phoneNumbers, (err, res) => {
             if (err) {
                 console.log(err)
-                this.refs.restaurantName.value = '';
-                this.refs.phoneNumber.value = '';
+                this.refs.restaurantName.value = ''
+                this.state.phoneNumbers.map((number, i) => this.refs[`phonenumber${i}`].value = '')
                 return;
             }
-            browserHistory.replace('/restaurants');
-        });
+            browserHistory.replace('/restaurants')
+        })
         // Restaurants.insert({ name: restaurantName, phoneNumber: [phoneNumber]});
 
     }
@@ -35,6 +36,10 @@ export class NewRestaurant extends React.Component {
     handlePhoneNumberInput = i => e => {
         newNumbers = this.state.phoneNumbers.map((number, index) => i !== index ? number : e.target.value)
         this.setState({ phoneNumbers: newNumbers })
+    }
+
+    handleMenuItemInput = i => e => {
+        menuItems = this .state.menu.map((menuItem, index) => i !== index ? menuItem : { ...menuItem, })
     }
 
     handleAddPhoneNumber() {
@@ -50,11 +55,21 @@ export class NewRestaurant extends React.Component {
     handlePhoneNumberInputFields() {
         return this.state.phoneNumbers.map((number, i) => {
             return (<div key={i}>
-                <input type='text' ref='phoneNumber' name={`phonenumber ${i}`} placeholder='phone number' value={number} onChange={this.handlePhoneNumberInput(i)} />
+                <input type='text' ref={`phonenumber${i}`} name={`phonenumber ${i}`} placeholder='phone number' value={number} onChange={this.handlePhoneNumberInput(i)} />
                 <button type="button" onClick={() => this.handleRemovePhoneNumber(i)} className="small">-</button>
             </div>)
         })
     }
+
+    // handleMenuItemInputFields() {
+    //     return this.state.menu.map((item, i) => {
+    //         return (<div>
+    //             <input type='text' ref={`menuItemName${i}`} name={`menuItem${i}`} placeholder='meal name' value={item['name']}  />
+    //             <input type='number' ref={`menuItemPrice${i}`} ={`menuItemPrice${i}`} placeholder='price' value={item['price']} />
+    //             <textarea ref={`description${i}`} name={`description${i}`} value={item['description']} placeholder='enter description of the meal here' ></textarea>
+    //         </div>)
+    //     })
+    // }
 
     componentDidMount() {
         Meteor.subscribe('restaurants');
