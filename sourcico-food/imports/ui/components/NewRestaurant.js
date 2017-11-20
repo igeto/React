@@ -38,6 +38,7 @@ export class NewRestaurant extends React.Component {
         this.setState({ phoneNumbers: newNumbers })
     }
 
+    // TODO
     handleMenuItemInput = i => e => {
         menuItems = this .state.menu.map((menuItem, index) => i !== index ? menuItem : { ...menuItem, })
     }
@@ -61,15 +62,16 @@ export class NewRestaurant extends React.Component {
         })
     }
 
-    // handleMenuItemInputFields() {
-    //     return this.state.menu.map((item, i) => {
-    //         return (<div>
-    //             <input type='text' ref={`menuItemName${i}`} name={`menuItem${i}`} placeholder='meal name' value={item['name']}  />
-    //             <input type='number' ref={`menuItemPrice${i}`} ={`menuItemPrice${i}`} placeholder='price' value={item['price']} />
-    //             <textarea ref={`description${i}`} name={`description${i}`} value={item['description']} placeholder='enter description of the meal here' ></textarea>
-    //         </div>)
-    //     })
-    // }
+    // TODO
+    handleMenuItemInputFields() {
+        return this.state.menu.map((item, i) => {
+            return (<div>
+                <input type='text' ref={`menuItemName${i}`} name={`menuItem${i}`} placeholder='meal name' value={item['name']}  />
+                <input type='number' ref={`menuItemPrice${i}`} name={`menuItemPrice${i}`} placeholder='price' value={item['price']} />
+                <textarea ref={`description${i}`} name={`description${i}`} value={item['description']} placeholder='enter description of the meal here' ></textarea>
+            </div>)
+        })
+    }
 
     componentDidMount() {
         Meteor.subscribe('restaurants');
@@ -86,7 +88,6 @@ export class NewRestaurant extends React.Component {
                     <h1>Add new restaurant</h1>
                     <form onSubmit={this.onSubmit.bind(this)} noValidate>
                         <input type='text' ref='restaurantName' name='restaurantName' placeholder='Restaurant name' />
-                        {/* <input type='text' ref='phoneNumber' name='phoneNumber' placeholder='02-1234-567' /> */}
                         {this.handlePhoneNumberInputFields()}
                         <button type='button' onClick={() => this.handleAddPhoneNumber()} >Add new phone number</button>
                         <button type='submit'>Add</button>
